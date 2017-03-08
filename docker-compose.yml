@@ -1,0 +1,17 @@
+web:
+ image: metabase/metabase
+ ports:
+ - "3000:3000"
+ links:
+ - dbmetabase
+ 
+
+dbmetabase:
+ image: mysql
+ ports:
+ - "3306:3306"
+ environment:
+ - MYSQL_ROOT_PASSWORD=klapaucius
+ - MYSQL_DATABASE=metabase_db
+ - MYSQL_USER=meta
+ - MYSQL_PASSWORD="2jU1r1u%"
