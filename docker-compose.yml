@@ -7,11 +7,18 @@ web:
  
 
 dbmetabase:
- image: mysql
+ image: library/postgres
  ports:
- - "3306:3306"
+ - "5432:5432"
  environment:
- - MYSQL_ROOT_PASSWORD=klapaucius
- - MYSQL_DATABASE=metabase_db
- - MYSQL_USER=meta
- - MYSQL_PASSWORD="2jU1r1u%"
+ - POSTGRES_PASSWORD=klapaucius
+ - POSTGRES_DB=metabase_db
+ - POSTGRES_USER=meta
+
+
+dbadmin:
+ image: lukasmartinelli/pgstudio
+ ports:
+ - "8080:8080"
+ links:
+ - dbmetabase
